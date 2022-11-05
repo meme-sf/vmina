@@ -1802,6 +1802,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"husky@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "husky@npm:8.0.1"
+  bin:
+    husky: lib/bin.js
+  checksum: 943a73a13d0201318fd30e83d299bb81d866bd245b69e6277804c3b462638dc1921694cb94c2b8c920a4a187060f7d6058d3365152865406352e934c5fff70dc
+  languageName: node
+  linkType: hard
+
 "ignore@npm:^5.2.0":
   version: 5.2.0
   resolution: "ignore@npm:5.2.0"
@@ -2213,6 +2222,7 @@ __metadata:
     eslint-plugin-react: ^7.31.10
     eslint-plugin-typescript-sort-keys: ^2.1.0
     eslint-plugin-unused-imports: ^2.0.0
+    husky: ^8.0.1
     prettier: ^2.7.1
     typescript: ^4.8.4
   languageName: unknown
