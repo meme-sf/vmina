@@ -48,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:41273f1c2f78d4bfd94e221d03e94c5ea51cfd01285666cfab42826bea37b6ec77d2ac40031f91305acf8a1c3e05ba86b8e8f997cd2e04230d2c3a28c20544f0#npm:7.31.10"],\
             ["eslint-plugin-typescript-sort-keys", "virtual:41273f1c2f78d4bfd94e221d03e94c5ea51cfd01285666cfab42826bea37b6ec77d2ac40031f91305acf8a1c3e05ba86b8e8f997cd2e04230d2c3a28c20544f0#npm:2.1.0"],\
             ["eslint-plugin-unused-imports", "virtual:41273f1c2f78d4bfd94e221d03e94c5ea51cfd01285666cfab42826bea37b6ec77d2ac40031f91305acf8a1c3e05ba86b8e8f997cd2e04230d2c3a28c20544f0#npm:2.0.0"],\
+            ["husky", "npm:8.0.1"],\
             ["prettier", "npm:2.7.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=f456af"]\
           ],\
@@ -2396,6 +2397,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["husky", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.1-85fede8470-943a73a13d.zip/node_modules/husky/",\
+          "packageDependencies": [\
+            ["husky", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ignore", [\
         ["npm:5.2.0", {\
           "packageLocation": "./.yarn/cache/ignore-npm-5.2.0-fc4b58a4f3-6b1f926792.zip/node_modules/ignore/",\
@@ -2865,6 +2875,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:41273f1c2f78d4bfd94e221d03e94c5ea51cfd01285666cfab42826bea37b6ec77d2ac40031f91305acf8a1c3e05ba86b8e8f997cd2e04230d2c3a28c20544f0#npm:7.31.10"],\
             ["eslint-plugin-typescript-sort-keys", "virtual:41273f1c2f78d4bfd94e221d03e94c5ea51cfd01285666cfab42826bea37b6ec77d2ac40031f91305acf8a1c3e05ba86b8e8f997cd2e04230d2c3a28c20544f0#npm:2.1.0"],\
             ["eslint-plugin-unused-imports", "virtual:41273f1c2f78d4bfd94e221d03e94c5ea51cfd01285666cfab42826bea37b6ec77d2ac40031f91305acf8a1c3e05ba86b8e8f997cd2e04230d2c3a28c20544f0#npm:2.0.0"],\
+            ["husky", "npm:8.0.1"],\
             ["prettier", "npm:2.7.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=f456af"]\
           ],\
