@@ -1,0 +1,31 @@
+.pnp.cjs
+.pnp.loader.mjs
+.prettierrc
+jest.config.base.js
+
+build
+coverage
+
+# yarn
+.yarn/**/*
+.yarnrc.yml
+
+# web
+packages/**/.next
+
+# Story book
+packages/**/*.hbs
+
+# zk-tool 
+packages/zk-tools/*
+
+# graphql
+packages/approval-web/src/generated/*.ts
+packages/talent-web/src/generated/*.ts
+packages/company-web/src/generated/*.ts
+
+# Contract
+packages/talent-web/src/assets/abi/*.json
+
+# Lottie
+packages/talent-web/src/assets/Lottie/*.json
