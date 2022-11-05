@@ -4,6 +4,7 @@
   "devDependencies": {
     "@types/eslint": "^8",
     "@types/prettier": "^2",
+    "@types/react": "^18",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "@yarnpkg/sdks": "^3.0.0-rc.27",
@@ -25,5 +26,9 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "dependencies": {
+    "@tanstack/query-core": "^4.14.3",
+    "react": "^18.2.0"
   }
 }
