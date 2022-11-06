@@ -6218,6 +6218,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hardhat-project@workspace:packages/hardhat":
+  version: 0.0.0-use.local
+  resolution: "hardhat-project@workspace:packages/hardhat"
+  languageName: unknown
+  linkType: soft
+
 "has-bigints@npm:^1.0.1, has-bigints@npm:^1.0.2":
   version: 1.0.2
   resolution: "has-bigints@npm:1.0.2"
