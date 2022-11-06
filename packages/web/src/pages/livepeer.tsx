@@ -14,7 +14,11 @@ import {
 } from '@livepeer/react';
 import { useDropzone } from 'react-dropzone';
 
-import { getVideoImages } from '../lib/image';
+import {
+  getCanvassesFromVideo,
+  getImageDataFromCanvas,
+  getPixelData,
+} from '../lib/image';
 
 export const livepeerClient = createReactClient({
   provider: studioProvider({
@@ -26,6 +30,8 @@ const CreateAndViewAsset = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [video, setVideo] = useState<File | undefined>();
   const [b64, setB64] = useState<string | undefined>();
+  const [canvasses, setCanvasses] = useState<HTMLCanvasElement[]>([]);
+
   // PNG
   const [images, setImages] = useState<string[]>([]);
   const {
@@ -54,11 +60,24 @@ const CreateAndViewAsset = () => {
   // @LUKA: this is where we can get the images from the video
   useEffect(() => {
     if (!videoRef.current) return;
-    getVideoImages(videoRef.current, (images: string[]) => {
-      console.log('images', images);
-      setImages(images);
+    getCanvassesFromVideo(
+      videoRef.current,
+      (canvasses: HTMLCanvasElement[]) => {
+        // console.log('canvasses', canvasses);
+        setCanvasses(canvasses);
+      },
+    );
+
+    // getImageDataFromCanvas
+    if (canvasses?.length < 3) return;
+    const images: string[] = [];
+    canvasses.map((canvas) => {
+      const imageData = getImageDataFromCanvas(canvas);
+      console.log('imageData', imageData);
+      images.push(imageData);
     });
-  }, [b64]);
+    setImages(images);
+  }, [b64, canvasses]);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -124,6 +143,9 @@ const CreateAndViewAsset = () => {
         </div>
       )}
       {images && images.map((image, i) => <img key={i} src={image} />)}
+      {canvasses &&
+        canvasses.length > 0 &&
+        console.log('pixel data', getPixelData(canvasses[1]))}
     </>
   );
 };
