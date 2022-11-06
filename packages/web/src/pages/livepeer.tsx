@@ -81,6 +81,13 @@ const CreateAndViewAsset = () => {
     setImages(images);
   }, [b64, canvasses]);
 
+  useEffect(() => {
+    if (!canvasses?.length) return;
+    const pixelData = getPixelData(canvasses[1]);
+    if (!pixelData) return;
+    console.log('pixel data', getStandardPixelArray(pixelData));
+  }, [canvasses]);
+
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'video/*': ['.mp4'],
@@ -145,14 +152,6 @@ const CreateAndViewAsset = () => {
         </div>
       )}
       {images && images.map((image, i) => <img key={i} src={image} />)}
-      {canvasses &&
-        canvasses.length > 0 &&
-        getPixelData(canvasses[1]) !== undefined &&
-        // console.log('pixel data', getPixelData(canvasses[1]))}
-        console.log(
-          'pixel data',
-          getStandardPixelArray(getPixelData(canvasses[1])!),
-        )}
     </>
   );
 };
