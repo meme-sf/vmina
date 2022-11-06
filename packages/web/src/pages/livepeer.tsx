@@ -14,6 +14,8 @@ import {
 } from '@livepeer/react';
 import { useDropzone } from 'react-dropzone';
 
+import { getStandardPixelArray } from 'lib/imgToArray';
+
 import {
   getCanvassesFromVideo,
   getImageDataFromCanvas,
@@ -73,7 +75,7 @@ const CreateAndViewAsset = () => {
     const images: string[] = [];
     canvasses.map((canvas) => {
       const imageData = getImageDataFromCanvas(canvas);
-      console.log('imageData', imageData);
+      // console.log('imageData', imageData);
       images.push(imageData);
     });
     setImages(images);
@@ -145,7 +147,12 @@ const CreateAndViewAsset = () => {
       {images && images.map((image, i) => <img key={i} src={image} />)}
       {canvasses &&
         canvasses.length > 0 &&
-        console.log('pixel data', getPixelData(canvasses[1]))}
+        getPixelData(canvasses[1]) !== undefined &&
+        // console.log('pixel data', getPixelData(canvasses[1]))}
+        console.log(
+          'pixel data',
+          getStandardPixelArray(getPixelData(canvasses[1])!),
+        )}
     </>
   );
 };

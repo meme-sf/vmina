@@ -48,7 +48,9 @@ export function getImageDataFromCanvas(canvas: HTMLCanvasElement) {
 }
 
 // extract pixel data from a canvas
-export function getPixelData(canvas: HTMLCanvasElement) {
+export function getPixelData(
+  canvas: HTMLCanvasElement,
+): Uint8ClampedArray | undefined {
   const ctx = canvas.getContext('2d');
   const pixel = ctx?.getImageData(0, 0, canvas.width, canvas.height);
   const data = pixel?.data;
