@@ -3,7 +3,7 @@
 // https://lvpr.tv/?v=4bc056prm9d4p2aw
 
 /* eslint-disable jsx-a11y/alt-text */
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo, useRef, useEffect } from 'react';
 
 import { Badge, Box, Button, Text } from '@chakra-ui/react';
 import {
@@ -14,6 +14,8 @@ import {
 } from '@livepeer/react';
 import { useDropzone } from 'react-dropzone';
 
+import { getVideoImage } from '../lib/image';
+
 export const livepeerClient = createReactClient({
   provider: studioProvider({
     apiKey: process.env.NEXT_LIVEPEER_API_KEY,
@@ -21,6 +23,7 @@ export const livepeerClient = createReactClient({
 });
 
 const CreateAndViewAsset = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [video, setVideo] = useState<File | undefined>();
   const [b64, setB64] = useState<string | undefined>();
   const [images, setImages] = useState<string[]>([]);
@@ -41,10 +44,19 @@ const CreateAndViewAsset = () => {
     setVideo(video);
     let reader = new FileReader();
     reader.readAsDataURL(video);
-    if (reader.readyState === 2) {
+    if (typeof window === 'undefined' || !video) return;
+    reader.onload = () => {
       setB64(reader.result as string);
-    }
+    };
   }, []);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    getVideoImage(videoRef.current, (images: string[]) => {
+      console.log('images', images);
+      setImages(images);
+    });
+  }, [b64]);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -53,21 +65,6 @@ const CreateAndViewAsset = () => {
     maxFiles: 1,
     onDrop,
   });
-
-  //here `window` is available
-  if (typeof window !== 'undefined' && video) {
-    let reader = new FileReader();
-    reader.readAsDataURL(video);
-    reader.onload = () => {
-      console.log({
-        src: video,
-        data: reader.result,
-      });
-      if (reader.readyState === 2) {
-        setB64(reader.result as string);
-      }
-    };
-  }
 
   const progressFormatted = useMemo(
     () =>
@@ -118,14 +115,13 @@ const CreateAndViewAsset = () => {
       </Button>
       <p>Status: {createStatus} </p>
       <p>Error: {createError?.message} </p>
-      <p>
-        {b64 && (
-          <div>
-            <Text>Select a video to upload.</Text>
-            <video src={b64} controls />
-          </div>
-        )}
-      </p>
+      {b64 && (
+        <div>
+          <Text>Select a video to upload.</Text>
+          <video id="video" ref={videoRef} src={b64} controls />
+        </div>
+      )}
+      {images && images.map((image, i) => <img key={i} src={image} />)}
     </>
   );
 };
