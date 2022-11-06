@@ -1,33 +1,52 @@
-import { Mina, PublicKey } from 'snarkyjs';
+import { isReady, Mina, PrivateKey, PublicKey } from 'snarkyjs';
+
+import { BilinearInterpolation } from '../../../contract/build/src/BilinearInterpolation';
+import {
+  ImageComparison,
+  RGBArray,
+} from '../../../contract/build/src/ImageComparison';
 
 // setup
-const Local = Mina.LocalBlockchain();
-Mina.setActiveInstance(Local);
+export const setupMina = async () => {
+  try {
+    await isReady;
+    const Berkeley = Mina.BerkeleyQANet(
+      'https://proxy.berkeley.minaexplorer.com/graphql',
+    );
+    Mina.setActiveInstance(Berkeley);
+    console.log('==== network ready');
+  } catch (error) {
+    // ignore self.crossOriginIsolated warning
+  }
+};
 
-// TODO: connect with the testnet?
-const feePayer = Local.testAccounts[0].privateKey;
+// TODO: should be handled more securely
+const feePayer = process.env.NEXT_PUBLIC_FEE_PAYER as unknown as PrivateKey; //Local.testAccounts[0].privateKey;
+const zkAppPublicKey = process.env
+  .NEXT_PUBLIC_FEE_PAYER_PUBKEY as unknown as PublicKey;
 
 /**
  * Verify lowRes image is generated from highRes
- * @param param0
+ * @param args.highRes an array in RGB format
+ * @param args.lowRes an array in RGB format
  */
-const checkImage = async ({
-  zkappAddress,
+export const checkImage = async ({
   lowRes,
   highRes,
 }: {
-  zkappAddress: PublicKey;
-  lowRes: number[][];
-  highRes: number[][];
+  highRes: number[][][];
+  lowRes: number[][][];
 }): Promise<boolean> => {
   try {
+    const zkapp = new ImageComparison(zkAppPublicKey);
     let tx = await Mina.transaction(feePayer, () => {
-      // TODO: Add image inputs
-      // zkapp.checkImage(new BilinearInterpolation(json));
+      zkapp.verifyImage(
+        new BilinearInterpolation(highRes),
+        new RGBArray(lowRes),
+      );
     });
     await tx.send().wait();
-    // TODO: get result
-    // const result = await zkapp.getResult();
+    const result = zkapp.isVerified.get().toBoolean();
   } catch (error) {
     console.log('====');
   }
