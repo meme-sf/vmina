@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { useRouter } from 'next/router'
-import axios from 'axios'
-import { Box, Button, Center, Input, Image, Textarea } from '@chakra-ui/react'
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { Box, Button, Center, Input, Image, Textarea } from '@chakra-ui/react';
 
 type Props = {
-  pathnames: string[]
-}
+  pathnames: string[];
+};
 const Confirm: React.FC<Props> = ({ pathnames }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [title, setTitle] = useState<string>('');
   const [price, setPrice] = useState<string>('');
   const [details, setDetails] = useState<string>('');
@@ -18,7 +18,8 @@ const Confirm: React.FC<Props> = ({ pathnames }) => {
       title: title,
       price: price,
       details: details,
-      txHash: '0x1fe99c8e68d92f484cf3d78cb3e5e684e6278df72ae9a1ec22b813bc5e08bcfa',
+      txHash:
+        '0x1fe99c8e68d92f484cf3d78cb3e5e684e6278df72ae9a1ec22b813bc5e08bcfa',
       ownerAddress: '0x3f7E10eD4eac8c4a9c54ffbcD632215Aa78D598E',
     };
     const config = {
@@ -76,7 +77,7 @@ const Confirm: React.FC<Props> = ({ pathnames }) => {
         </Button>
       </Center>
     </>
-  )
-}
+  );
+};
 
-export default Confirm
+export default Confirm;
