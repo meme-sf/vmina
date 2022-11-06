@@ -1,12 +1,11 @@
 import React from 'react';
-
 import { Box, Center, Button, Icon, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
-
 import { shortenEOAName } from 'utils/shortenEOA';
+import { BiWallet } from 'react-icons/bi'
 
 const Header: React.FC = () => {
   const { address, isConnected } = useAccount();
@@ -29,11 +28,11 @@ const Header: React.FC = () => {
               </Button>
             </NextLink>
             {isConnected ? (
-              <Button colorScheme="orange" onClick={() => disconnect()}>
+              <Button leftIcon={<BiWallet />} colorScheme="orange" onClick={() => disconnect()}>
                 {shortAddress}
               </Button>
             ) : (
-              <Button colorScheme="orange" onClick={() => connect()}>
+              <Button leftIcon={<BiWallet />} colorScheme="orange" onClick={() => connect()}>
                 Connect Wallet
               </Button>
             )}
@@ -44,4 +43,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default Header

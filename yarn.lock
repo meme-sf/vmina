@@ -2390,6 +2390,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ramonak/react-progress-bar@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "@ramonak/react-progress-bar@npm:5.0.3"
+  peerDependencies:
+    react: ^16.0.0 || ^17 || ^18
+    react-dom: ^16.0.0 || ^17 || ^18
+  checksum: e041fa20749448eb46ef4a4abb6e6b7a1fd0dee4e75005e838a6cf7f0f42f1c8096c6a237986a5bfd531dd75995d3268ca713f1a5a5146496b8baaf99b2ddf3d
+  languageName: node
+  linkType: hard
+
 "@rushstack/eslint-patch@npm:^1.1.3":
   version: 1.2.0
   resolution: "@rushstack/eslint-patch@npm:1.2.0"
@@ -8871,6 +8881,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-spinners@npm:^0.13.6":
+  version: 0.13.6
+  resolution: "react-spinners@npm:0.13.6"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 0e557190b5811e62774de0000f91fdcc3afe845872084abd5620d16335eb8292ed3fb3fdb94527fe2802a8366ac4e5d42c8e5bffda9e8ed0d85d3c34b3829d8e
+  languageName: node
+  linkType: hard
+
 "react-style-singleton@npm:^2.2.1":
   version: 2.2.1
   resolution: "react-style-singleton@npm:2.2.1"
@@ -10200,6 +10220,7 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@livepeer/react": ^1.3.0
     "@prisma/client": ^4.5.0
+    "@ramonak/react-progress-bar": ^5.0.3
     "@supabase/supabase-js": ^2.0.5
     "@types/eslint": ^8
     "@types/mime": ^3
@@ -10222,6 +10243,7 @@ __metadata:
     react-dropzone: ^14.2.3
     react-icons: ^4.6.0
     react-slick: ^0.29.0
+    react-spinners: ^0.13.6
     slick-carousel: ^1.8.1
     snarkyjs: ^0.6.1
     typescript: 4.8.4

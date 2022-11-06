@@ -11,7 +11,7 @@ const postValidation = async (data) => {
       price: data.price,
       txHash: data.txHash,
       ownerAddress: data.ownerAddress,
-      isVerified: false,
+      isVerified: true,
     },
   });
   return resp;
