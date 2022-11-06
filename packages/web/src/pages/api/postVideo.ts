@@ -8,6 +8,9 @@ const postValidation = async (data) => {
       title: data.title,
       details: data.details,
       price: data.price,
+      txHash: data.txHash,
+      ownerAddress: data.ownerAddress,
+      isVerified: false,
     },
   });
   return resp;
@@ -19,8 +22,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const data = {
     imagePaths: req.body.imagePaths,
     title: req.body.title,
-    details: req.body.details ? req.body.details : '',
+    details: req.body.details,
     price: JSON.parse(req.body.price),
+    txHash: req.body.txHash,
+    ownerAddress: req.body.ownerAddress,
   };
   console.log(data);
   const resp = await postValidation(data);

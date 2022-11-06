@@ -7,14 +7,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const ImageTest = () => {
+const Upload = () => {
   const router = useRouter();
   const client = new NFTStorage({
     token: process.env.NEXT_PUBLIC_NFT_STORAGE_API_KEY || '',
   });
   const [pathnames, setPathnames] = useState<string[]>([]);
   const [title, setTitle] = useState<string>('');
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState<string>('');
   const [details, setDetails] = useState<string>('');
 
   const sliderRef = useRef(null);
@@ -49,6 +49,8 @@ const ImageTest = () => {
       title: title,
       price: price,
       details: details,
+      txHash: '0x1fe99c8e68d92f484cf3d78cb3e5e684e6278df72ae9a1ec22b813bc5e08bcfa',
+      ownerAddress: '0x3f7E10eD4eac8c4a9c54ffbcD632215Aa78D598E',
     };
     const config = {
       headers: {
@@ -113,7 +115,7 @@ const ImageTest = () => {
               type="number"
               value={price}
               onChange={(e) => {
-                setPrice(JSON.parse(e.target.value));
+                setPrice(e.target.value);
               }}
             />
           </Center>
@@ -137,4 +139,4 @@ const ImageTest = () => {
   );
 };
 
-export default ImageTest;
+export default Upload

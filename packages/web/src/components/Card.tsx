@@ -49,7 +49,7 @@ const Card: React.FC<Props> = ({ video }) => {
         >
           <Center gap={1}>
             {video.title ? video.title : 'No title'}
-            <Icon color="#1C9BEF" as={BsFillPatchCheckFill} />
+            <Icon opacity={video.isVerified ? 1 : 0} color="#1C9BEF" as={BsFillPatchCheckFill} />
           </Center>
           <Text>{video.price ? `$ ${video.price}` : 'No price'}</Text>
         </Center>

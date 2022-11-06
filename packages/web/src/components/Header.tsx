@@ -12,7 +12,7 @@ const Header: React.FC = () => {
             <Image src="logo.png" h="60px" />
           </NextLink>
           <Box>
-            <NextLink href="/imageTest" passHref>
+            <NextLink href="/upload" passHref>
               <Button mr="20px" colorScheme="orange">
                 <Icon as={AiOutlinePlus} />
               </Button>

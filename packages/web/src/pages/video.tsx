@@ -62,30 +62,32 @@ const Video: NextPage<PropTypes> = ({ video }) => {
             <Flex color='black' m='40px 40px 20px 40px' justifyContent='space-between'>
               <Center textAlign='left' fontSize='30px' fontWeight='bold' color='black' >
                 {video.title}
-                <Icon color='#1C9BEF' ml='20px' as={BsFillPatchCheckFill} />
+                <Icon opacity={video.isVerified ? 1 : 0} color='#1C9BEF' ml='20px' as={BsFillPatchCheckFill} />
               </Center>
               <Box fontWeight='bold'>
-                <Center as={Link} target="_blank" href={'/0xfeofoda0398yf3983927ey298dvuhfuhdsig98e3r9h'}>
-                  Owner: {video.txHash ? video.txHash : '0xfeofoda0398yf3983927ey298dvuhfuhdsig98e3r9h'}
+                <Center  as={Link} target="_blank" href={`/${video.txHash}`}>
+                  txHash: {video.txHash}
                   <Icon ml='5px' as={FiExternalLink} />
                 </Center>
-                <Center as={Link} target="_blank" href={'/0xfeofoda0398yf3983927ey298dvuhfuhdsig98e3r9h'}>
-                  txHash: {video.txHash ? video.txHash : '0xfeofoda0398yf3983927ey298dvuhfuhdsig98e3r9h'}
+                <Flex lineHeight='17px' as={Link} target="_blank" href={`/${video.ownerAddress}`}>
+                  Owner: {video.ownerAddress}
                   <Icon ml='5px' as={FiExternalLink} />
-                </Center>
+                </Flex>
               </Box>
             </Flex>
-            <Text textAlign='left' fontSize='20px' fontWeight='bold' color='black' m='0 40px'>
-              {video.details}
-            </Text>
-            <Box textAlign='right' p='10px 40px'>
-              <Text color='black' fontWeight='bold' fontSize='20px'>
-                ${video.price}
+            <Flex>
+              <Text textAlign='left' fontSize='20px' fontWeight='bold' color='black' m='0 40px'>
+                {video.details}
               </Text>
-              <Button color='black' colorScheme='orange' w='20%'>
-                Buy
-              </Button>
-            </Box>
+              <Box textAlign='right' p='10px 40px'>
+                <Text color='black' fontWeight='bold' fontSize='20px'>
+                  ${video.price}
+                </Text>
+                <Button color='black' colorScheme='orange' w='150px'>
+                  Buy
+                </Button>
+              </Box>
+            </Flex>
           </Box>
         </Box>
       </Box>
