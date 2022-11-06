@@ -25,7 +25,9 @@ packages/talent-web/src/generated/*.ts
 packages/company-web/src/generated/*.ts
 
 # Contract
-packages/talent-web/src/assets/abi/*.json
+packages/web/src/assets/abi/*.json
+packages/contract/input/*.json
 
 # Lottie
 packages/talent-web/src/assets/Lottie/*.json
+
