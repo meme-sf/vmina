@@ -1,12 +1,6 @@
-import React, {
-  useCallback,
-  useState,
-  useMemo,
-  useRef,
-  useEffect,
-} from 'react';
+import React, { useCallback, useState, useRef, useEffect } from 'react';
+
 import {
-  Badge,
   Box,
   Button,
   Center,
@@ -20,12 +14,15 @@ import {
   ModalBody,
 } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
+
 import {
   getCanvassesFromVideo,
   getImageDataFromCanvas,
   getPixelData,
 } from '../../lib/image';
+
 import { getStandardPixelArray } from 'lib/imgToArray';
+
 import { BsFillCloudUploadFill } from 'react-icons/bs';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -33,14 +30,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import CircleLoader from 'react-spinners/CircleLoader';
 
 type Props = {
-  setStep: Function;
   b64: string | undefined;
-  setB64: Function;
-  pathnames: string[];
-  setVideo: Function;
   canvasses: HTMLCanvasElement[];
+  pathnames: string[];
+  setB64: Function;
   setCanvasses: Function;
   setImages: Function;
+  setStep: Function;
+  setVideo: Function;
 };
 
 const Thumbnails: React.FC<Props> = ({
@@ -185,8 +182,8 @@ const Thumbnails: React.FC<Props> = ({
               h="100%"
               w="100%"
               border="1px dotted #CACACA"
-              //@ts-ignore
               onClick={() => {
+                //@ts-ignore
                 inputRef.current ? inputRef.current.click() : null;
               }}
             >
