@@ -1,4 +1,3 @@
-import { Video } from '.prisma/client';
 import React, { useRef } from 'react';
 import { Box, Button, Center, Text, Image, Icon } from '@chakra-ui/react';
 import Slider from 'react-slick';
@@ -7,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 
 interface Props {
-  video: Video;
+  video: any;
 }
 
 const Card: React.FC<Props> = ({ video }) => {
@@ -49,7 +48,11 @@ const Card: React.FC<Props> = ({ video }) => {
         >
           <Center gap={1}>
             {video.title ? video.title : 'No title'}
-            <Icon opacity={video.isVerified ? 1 : 0} color="#1C9BEF" as={BsFillPatchCheckFill} />
+            <Icon
+              opacity={video.isVerified ? 1 : 0}
+              color="#1C9BEF"
+              as={BsFillPatchCheckFill}
+            />
           </Center>
           <Text>{video.price ? `$ ${video.price}` : 'No price'}</Text>
         </Center>
