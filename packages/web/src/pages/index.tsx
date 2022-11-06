@@ -1,5 +1,5 @@
-import { Video } from '.prisma/client';
 import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Video } from '@prisma/client';
 import { NextPage } from 'next';
 import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';

@@ -2,8 +2,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import React, { useRef } from 'react';
 
-import { Video } from '.prisma/client';
 import { Box, Button, Center, Icon, Image, Text } from '@chakra-ui/react';
+import { Video } from '@prisma/client';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import Slider from 'react-slick';
 

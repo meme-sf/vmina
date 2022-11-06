@@ -2,7 +2,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import React, { useRef } from 'react';
 
-import { Video } from '.prisma/client';
 import {
   Box,
   Button,
@@ -13,6 +12,7 @@ import {
   Link,
   Text,
 } from '@chakra-ui/react';
+import { Video } from '@prisma/client';
 import { NextPage } from 'next';
 import type { GetServerSideProps } from 'next';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
