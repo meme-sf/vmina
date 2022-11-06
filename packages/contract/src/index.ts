@@ -1,3 +1,3 @@
-import { Add } from './Add.js';
+import { ImageComparison } from './ImageComparison';
 
-export { Add };
+export { ImageComparison };
