@@ -3,7 +3,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
-const { API_URL, MUMBAI_URL, PRIVATE_KEY } = process.env;
+const { API_URL, OPT_URL, MUMBAI_URL, PRIVATE_KEY } = process.env;
  module.exports = {
     solidity: "0.8.9",
     defaultNetwork: "goerli",
@@ -15,6 +15,10 @@ const { API_URL, MUMBAI_URL, PRIVATE_KEY } = process.env;
       },
       mumbai: {
         url: MUMBAI_URL,
+        accounts: [`0x${PRIVATE_KEY}`],
+      },
+      opt_goerli: {
+        url: OPT_URL,
         accounts: [`0x${PRIVATE_KEY}`],
       }
     },

@@ -94,6 +94,35 @@ const VideoPage: NextPage<Props> = ({ video }: Props) => {
     });
   }
 
+  const handleOptSubmit = async () => {
+    if(!isConnected) return
+    setLoading(true)
+    const data = {
+      address: address,
+      imagePaths: video.imagePaths[0],
+    };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    console.log(data);
+    return new Promise((resolve, reject) => {
+      axios
+        .post('/api/mintOptNFT', data, config)
+        .then((response) => {
+          if (response.status !== 200) throw Error('Server error');
+          router.push('/');
+          setLoading(false)
+          resolve(response);
+        })
+        .catch((e) => {
+          reject(e);
+          throw Error('Server error:' + e);
+        });
+    });
+  }
+
   if (!video) return <>loading...</>;
   return (
     <>
@@ -224,6 +253,9 @@ const VideoPage: NextPage<Props> = ({ video }: Props) => {
                 </Text>
                 <Button color="black" colorScheme="orange" w="150px" onClick={handleSubmit}>
                   Buy
+                </Button>
+                <Button mt='10px' color="black" colorScheme="orange" w="150px" onClick={handleOptSubmit}>
+                  Buy w/ Opt
                 </Button>
               </Box>
             </Flex>
