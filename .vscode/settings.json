@@ -7,5 +7,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "eslint.workingDirectories": ["packages/web"],
+  "eslint.workingDirectories": ["packages/web"]
 }
