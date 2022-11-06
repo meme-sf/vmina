@@ -61,7 +61,7 @@ export const makeAndSendTransaction = async <State extends ToString>({
     { feePayerKey: feePayerPrivateKey, fee: transactionFee },
     () => {
       mutateZkApp();
-    }
+    },
   );
 
   // fill in the proof - this can take a while...
@@ -79,7 +79,7 @@ export const makeAndSendTransaction = async <State extends ToString>({
   } else {
     console.log(
       'See transaction at',
-      'https://berkeley.minaexplorer.com/transaction/' + hash
+      'https://berkeley.minaexplorer.com/transaction/' + hash,
     );
   }
 
@@ -89,7 +89,7 @@ export const makeAndSendTransaction = async <State extends ToString>({
   while (!stateChanged) {
     console.log(
       'waiting for zkApp state to change... (current state: ',
-      state.toString() + ')'
+      state.toString() + ')',
     );
     await new Promise((resolve) => setTimeout(resolve, 5000));
     await fetchAccount({ publicKey: zkAppPublicKey });
@@ -106,11 +106,11 @@ export const zkAppNeedsInitialization = async ({
   zkAppAccount: FetchedAccount;
 }) => {
   console.warn(
-    'warning: using a `utils.ts` written before `isProved` made available. Check https://docs.minaprotocol.com/zkapps/tutorials/deploying-to-a-live-network for updates'
+    'warning: using a `utils.ts` written before `isProved` made available. Check https://docs.minaprotocol.com/zkapps/tutorials/deploying-to-a-live-network for updates',
   );
   // TODO when available in the future, use isProved.
   const allZeros = zkAppAccount.appState!.every((f: Field) =>
-    f.equals(Field.zero).toBoolean()
+    f.equals(Field.zero).toBoolean(),
   );
   const needsInitialization = allZeros;
   return needsInitialization;
