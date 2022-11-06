@@ -112,9 +112,8 @@ const ImageTest = () => {
             <Input
               type="number"
               value={price}
-              //@ts-ignore
               onChange={(e) => {
-                setPrice(e.target.value);
+                setPrice(JSON.parse(e.target.value));
               }}
             />
           </Center>

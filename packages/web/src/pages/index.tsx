@@ -1,17 +1,11 @@
 import { NextPage } from 'next';
-import React, { useRef } from 'react';
-import type { GetServerSideProps } from 'next';
-import prisma from '../lib/prisma';
+import React from 'react'
+import type { GetServerSideProps } from "next";
+import prisma from '../lib/prisma'
 import { Video } from '.prisma/client';
-import {
-  Box,
-  Button,
-  Center,
-  Input,
-  Image,
-  SimpleGrid,
-} from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react'
 import Card from 'components/Card';
+import { useRouter } from 'next/router'
 
 type Props = {
   videos: Video[];
@@ -30,12 +24,19 @@ interface PropTypes {
 }
 
 const Index: NextPage<PropTypes> = ({ videos }) => {
-  if (!videos) return <>loading...</>;
+  const router = useRouter()
+  if(!videos) return (
+    <>loading...</>
+  )
   return (
     <>
       <SimpleGrid columns={3} spacing={20} w="100%" p="0 12%" mt="40px">
         {videos.map((val: Video, key: number) => {
-          return <Card video={val} key={key} />;
+          return (
+            <Box key={key} onClick={() => {router.push(`/video?id=${val.id}`)}}>
+              <Card video={val} key={key} />
+            </Box>
+          )
         })}
       </SimpleGrid>
     </>
