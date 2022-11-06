@@ -14,7 +14,7 @@ import {
 } from '@livepeer/react';
 import { useDropzone } from 'react-dropzone';
 
-import { getVideoImage } from '../lib/image';
+import { getVideoImages } from '../lib/image';
 
 export const livepeerClient = createReactClient({
   provider: studioProvider({
@@ -26,6 +26,7 @@ const CreateAndViewAsset = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [video, setVideo] = useState<File | undefined>();
   const [b64, setB64] = useState<string | undefined>();
+  // PNG
   const [images, setImages] = useState<string[]>([]);
   const {
     mutate: createAsset,
@@ -50,9 +51,10 @@ const CreateAndViewAsset = () => {
     };
   }, []);
 
+  // @LUKA: this is where we can get the images from the video
   useEffect(() => {
     if (!videoRef.current) return;
-    getVideoImage(videoRef.current, (images: string[]) => {
+    getVideoImages(videoRef.current, (images: string[]) => {
       console.log('images', images);
       setImages(images);
     });
