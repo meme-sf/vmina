@@ -1,11 +1,12 @@
-import { Box, Button, Center, Input, Image, Textarea } from '@chakra-ui/react';
-import React, { useState, useRef } from 'react';
-import { NFTStorage, File } from 'nft.storage';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import React, { useRef, useState } from 'react';
+
+import { Box, Button, Center, Image, Input, Textarea } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { File, NFTStorage } from 'nft.storage';
+import Slider from 'react-slick';
 
 const Upload = () => {
   const router = useRouter();
@@ -49,7 +50,8 @@ const Upload = () => {
       title: title,
       price: price,
       details: details,
-      txHash: '0x1fe99c8e68d92f484cf3d78cb3e5e684e6278df72ae9a1ec22b813bc5e08bcfa',
+      txHash:
+        '0x1fe99c8e68d92f484cf3d78cb3e5e684e6278df72ae9a1ec22b813bc5e08bcfa',
       ownerAddress: '0x3f7E10eD4eac8c4a9c54ffbcD632215Aa78D598E',
     };
     const config = {
@@ -139,4 +141,4 @@ const Upload = () => {
   );
 };
 
-export default Upload
+export default Upload;

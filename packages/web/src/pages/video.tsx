@@ -1,26 +1,26 @@
-import { NextPage } from 'next';
-import prisma from '../lib/prisma';
-import type { GetServerSideProps } from 'next';
-import React, { useState, useRef } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import React, { useRef } from 'react';
+
+import { Video } from '.prisma/client';
 import {
   Box,
   Button,
   Center,
-  Text,
-  Image,
   Flex,
   Icon,
+  Image,
   Link,
+  Text,
 } from '@chakra-ui/react';
+import { NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { FiExternalLink } from 'react-icons/fi';
+import Slider from 'react-slick';
 
-type Props = {
-  video: any;
-};
+import prisma from '../lib/prisma';
+
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context,
 ) => {
@@ -38,11 +38,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     },
   };
 };
-interface PropTypes {
-  video: any;
-}
 
-const Video: NextPage<PropTypes> = ({ video }) => {
+type Props = {
+  video: Video;
+};
+
+const VideoPage: NextPage<Props> = ({ video }: Props) => {
   const sliderRef = useRef(null);
 
   const settings = {
@@ -134,4 +135,4 @@ const Video: NextPage<PropTypes> = ({ video }) => {
   );
 };
 
-export default Video;
+export default VideoPage;

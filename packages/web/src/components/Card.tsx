@@ -1,12 +1,14 @@
-import React, { useRef } from 'react';
-import { Box, Button, Center, Text, Image, Icon } from '@chakra-ui/react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import React, { useRef } from 'react';
+
+import { Video } from '.prisma/client';
+import { Box, Button, Center, Icon, Image, Text } from '@chakra-ui/react';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
+import Slider from 'react-slick';
 
 interface Props {
-  video: any;
+  video: Video;
 }
 
 const Card: React.FC<Props> = ({ video }) => {
@@ -40,7 +42,7 @@ const Card: React.FC<Props> = ({ video }) => {
         </Slider>
         <Center
           color="black"
-          justifyContent={'space-between'}
+          justifyContent="space-between"
           p="0 20px"
           mt="30px"
           fontSize="18px"

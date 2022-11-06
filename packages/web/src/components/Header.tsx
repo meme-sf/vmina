@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <Box w="100%" h="60px" p="0 30px 0 0" bg="#FFFDF6">
         <Center h="100%" justifyContent="space-between">
           <NextLink href="/" passHref>
-            <Image src="logo.png" h="60px" />
+            <Image alt="vmina logo" src="logo.png" h="60px" />
           </NextLink>
           <Box>
             <NextLink href="/upload" passHref>
