@@ -1,14 +1,19 @@
-import { Box, Button, Center, Input, Image } from '@chakra-ui/react'
+import { Box, Button, Center, Input, Image, Textarea } from '@chakra-ui/react'
 import React, { useState, useRef } from 'react'
 import { NFTStorage, File } from 'nft.storage'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const ImageTest = () => {
+  const router = useRouter()
   const client = new NFTStorage({ token: process.env.NEXT_PUBLIC_NFT_STORAGE_API_KEY || '' })
   const [pathnames, setPathnames] = useState<string[]>([])
+  const [title, setTitle] = useState<string>('')
+  const [price, setPrice] = useState<number>(0)
+  const [details, setDetails] = useState<string>('')
 
   const sliderRef = useRef(null)
 
@@ -16,6 +21,7 @@ const ImageTest = () => {
     dots: true,
     infinite: true,
     speed: 500,
+    arrows: false,
   }
 
   const handleIPFS = async (file: any) => {
@@ -44,6 +50,9 @@ const ImageTest = () => {
   const handleSubmit = async () => {
     const data = {
       'imagePaths': pathnames,
+      'title': title,
+      'price': price,
+      'details': details,
     }
     const config = {
       headers: {
@@ -55,6 +64,7 @@ const ImageTest = () => {
       axios.post('/api/postVideo', data, config)
       .then(response => {
         if(response.status !== 200) throw Error("Server error")
+        router.push('/')
         resolve(response)
       })
       .catch(e => {
@@ -81,8 +91,23 @@ const ImageTest = () => {
               )
             })}
           </Slider>
-          <Center mt='80px'>
-            <Button w='30%' onClick={handleSubmit}>
+          <Center mt='80px' p='0 20%' gap={5}>
+            Title:
+            <Input type='text' value={title} onChange={(e) => {setTitle(e.target.value)}} />
+            Price:
+            <Input
+              type='number'
+              value={price}
+              //@ts-ignore
+              onChange={(e) => {setPrice(e.target.value)}}
+            />
+          </Center>
+          <Center mt='40px' p='0 20%' gap={5}>
+            Details:
+            <Textarea value={details} onChange={(e) => {setDetails(e.target.value)}} />
+          </Center>
+          <Center mt='40px'>
+            <Button w='30%' onClick={handleSubmit} mb='40px'>
               Upload
             </Button>
           </Center>

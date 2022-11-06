@@ -3,10 +3,9 @@ import React, { useRef } from 'react'
 import type { GetServerSideProps } from "next";
 import prisma from '../lib/prisma'
 import { Video } from '.prisma/client';
-import { Box, Button, Center, Input, Image } from '@chakra-ui/react'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Box, Button, Center, Input, Image, SimpleGrid } from '@chakra-ui/react'
+import Card from 'components/Card';
+
 
 type Props = {
   videos: Video[]
@@ -25,36 +24,18 @@ interface PropTypes {
 }
 
 const Index: NextPage<PropTypes> = ({ videos }) => {
-  const sliderRef = useRef(null)
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-  }
-
   if(!videos) return (
     <>loading...</>
   )
   return (
     <>
-      {videos.map((val: Video, key: number) => {
-        return (
-          <>
-            <Slider ref={sliderRef} {...settings} key={key}>
-              {val.imagePaths.map((val: string, key: number) => {
-                return (
-                  <Center key={key} w='100%'>
-                    <Box boxSize='sm' m='0 auto'>
-                      <Image src={`https://ipfs.io/ipfs${val}`} alt='image test' key={key} />
-                    </Box>
-                  </Center>
-                )
-              })}
-            </Slider>
-          </>
-        )
-      })}
+      <SimpleGrid columns={3} spacing={20} w='100%' p='0 12%' mt='40px'>
+        {videos.map((val: Video, key: number) => {
+          return (
+            <Card video={val} key={key} />
+          )
+        })}
+      </SimpleGrid>
     </>
   );
 }

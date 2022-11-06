@@ -10,7 +10,8 @@ generator client {
 model Video {
   id         Int      @id @default(autoincrement())
   imagePaths String[]
-  title      String?
+  title      String
   details    String?
+  price      Int
   txHash     String?
 }
